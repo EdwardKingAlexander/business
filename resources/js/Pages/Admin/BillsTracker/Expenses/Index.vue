@@ -1,7 +1,7 @@
 <script setup>
 
 import { Head, usePage } from '@inertiajs/vue3';
-import { onMounted, ref } from 'vue';
+import { ref } from 'vue';
 import AdminLayout from '@/Layouts/AdminLayout.vue';
 
 

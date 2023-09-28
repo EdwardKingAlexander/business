@@ -89,17 +89,17 @@ const toggleSidebar = () => {
                             Bills Tracker
                         </AdminMobileSideBarLink>
 
-                        <AdminMobileSideBarLink :routeName="'expenses.index'">
+                        <AdminMobileSideBarLink :routeName="'crops.index'">
                             <CropsIcon />
                             Crops
                         </AdminMobileSideBarLink>
                         
-                        <AdminMobileSideBarLink :routeName="'expenses.index'">
+                        <AdminMobileSideBarLink :routeName="'inventory.index'">
                             <InventoryIcon />
                             Inventory
                         </AdminMobileSideBarLink>
 
-                        <AdminMobileSideBarLink :routeName="'expenses.index'">
+                        <AdminMobileSideBarLink :routeName="'tasks.index'">
                             <TasksIcon />
                             Tasks
                         </AdminMobileSideBarLink>
