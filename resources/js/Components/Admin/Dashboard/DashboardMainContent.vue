@@ -71,9 +71,17 @@ function isItAm() {
                   </div>
                   <div class="ml-5 w-0 flex-1">
                     <dl>
-                      <dt class="truncate text-sm font-medium text-gray-500">Account balance</dt>
+                      <dt class="truncate text-sm font-medium text-gray-500 ">Tasks</dt>
                       <dd>
-                        <div class="text-lg font-medium text-gray-900">$30,659.45</div>
+                        <div class="text-lg font-medium text-gray-900 p-3">- Walk Mufasa</div>
+                      </dd>
+
+                      <dd>
+                        <div class="text-lg font-medium text-gray-900 p-3">- File Taxes</div>
+                      </dd>
+
+                      <dd>
+                        <div class="text-lg font-medium text-gray-900 p-3">- Cook Dinner</div>
                       </dd>
                     </dl>
                   </div>
@@ -98,9 +106,21 @@ function isItAm() {
                   </div>
                   <div class="ml-5 w-0 flex-1">
                     <dl>
-                      <dt class="truncate text-sm font-medium text-gray-500">Account balance</dt>
+                      <dt class="truncate text-sm font-medium text-gray-500">Web Apps 
+                        <span class="text-blue-400" >
+                          <a href="">17 Notifications</a>
+                        </span> 
+                      </dt>
                       <dd>
-                        <div class="text-lg font-medium text-gray-900">$30,659.45</div>
+                        <div class="text-lg font-medium text-gray-900 p-3">- Laravel needs updating</div>
+                      </dd>
+
+                      <dd>
+                        <div class="text-lg font-medium text-gray-900 p-3">- New Login from Unidentified device</div>
+                      </dd>
+
+                      <dd>
+                        <div class="text-lg font-medium text-red-500 p-3">- "The Board Cafe" has not paid their bills and it currently suspended.</div>
                       </dd>
                     </dl>
                   </div>
@@ -125,9 +145,9 @@ function isItAm() {
                   </div>
                   <div class="ml-5 w-0 flex-1">
                     <dl>
-                      <dt class="truncate text-sm font-medium text-gray-500">Account balance</dt>
+                      <dt class="truncate text-sm font-medium text-gray-500">Crops</dt>
                       <dd>
-                        <div class="text-lg font-medium text-gray-900">$30,659.45</div>
+                        <div class="text-lg font-medium text-gray-900">22 notifications</div>
                       </dd>
                     </dl>
                   </div>
@@ -152,9 +172,16 @@ function isItAm() {
                   </div>
                   <div class="ml-5 w-0 flex-1">
                     <dl>
-                      <dt class="truncate text-sm font-medium text-gray-500">Account balance</dt>
+                      <dt class="truncate text-sm font-medium text-gray-500">Inventory</dt>
                       <dd>
-                        <div class="text-lg font-medium text-gray-900">$30,659.45</div>
+                        <div class="text-lg font-medium text-gray-900">126,287 products 
+                          <br>
+                          <span class="text-green-500">+$361.23/Day</span> 
+                          <br>
+                          <span class="text-green-500">Top Product: Spinners</span> 
+                        
+                        </div>
+                          
                       </dd>
                     </dl>
                   </div>
@@ -179,9 +206,17 @@ function isItAm() {
                   </div>
                   <div class="ml-5 w-0 flex-1">
                     <dl>
-                      <dt class="truncate text-sm font-medium text-gray-500">Account balance</dt>
+                      <dt class="truncate text-sm font-medium text-gray-500">CRM</dt>
                       <dd>
-                        <div class="text-lg font-medium text-gray-900">$30,659.45</div>
+                        <div class="text-lg font-medium text-gray-900 p-3">Jason Davidson needs atention</div>
+                      </dd>
+
+                      <dd>
+                        <div class="text-lg font-medium text-gray-900 p-3">John Smith needs atention</div>
+                      </dd>
+
+                      <dd>
+                        <div class="text-lg font-medium text-gray-900 p-3">Ivana Humpulot needs atention</div>
                       </dd>
                     </dl>
                   </div>

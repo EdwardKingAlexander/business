@@ -1,6 +1,4 @@
 <script setup>
-import Row from '@/Components/Admin/Dashboard/Inventory/InventoryRow.vue';
-import Headers from '@/Components/Admin/Dashboard/Inventory/RowHeaders.vue';
 
 const props = defineProps({
     products: {

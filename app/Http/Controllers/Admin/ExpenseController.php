@@ -16,14 +16,14 @@ class ExpenseController extends Controller
     public function index()
     {
     
-        $initialData = [
-            'expenses' => auth()->user()->expenses()->orderBy('created_at', 'desc')->get(),
-            'message' => 'Expenses Tracker'
-        ];
+        $expenses = auth()->user()->expenses()->orderBy('created_at', 'desc')->get();
 
+       
+ 
         return Inertia::render('Admin/BillsTracker/Expenses/Index',
         [  
-            'initialData' => $initialData
+            'expenses' => $expenses,
+            'message' => 'Expenses Tracker'
         ]);
     }
 
