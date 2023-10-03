@@ -2,16 +2,8 @@
 import { ref } from 'vue';
 
 import AdminMobileNav from '@/Components/Admin/Dashboard/Navigation/AdminMobileNav.vue';
-import AdminSideBarLink from '@/Components/Admin/Dashboard/Navigation/AdminSideBarLink.vue';
-import DashboardIcon from '@/Components/Admin/Dashboard/Navigation/Icons/DashboardIcon.vue';
-import BillsTrackerIcon from '@/Components/Admin/Dashboard/Navigation/Icons/BillsTrackerIcon.vue';
-import CropsIcon from '@/Components/Admin/Dashboard/Navigation/Icons/CropsIcon.vue';
-import InventoryIcon from '@/Components/Admin/Dashboard/Navigation/Icons/InventoryIcon.vue';
-import TasksIcon from '@/Components/Admin/Dashboard/Navigation/Icons/TasksIcon.vue';
-import CRMIcon from '@/Components/Admin/Dashboard/Navigation/Icons/CRMIcon.vue';
-import AssetManagerIcon from '@/Components/Admin/Dashboard/Navigation/Icons/AssetManagerIcon.vue';  
-import AIAssistantIcon from '@/Components/Admin/Dashboard/Navigation/Icons/AIAssistantIcon.vue';  
-import ReportsIcon from '@/Components/Admin/Dashboard/Navigation/Icons/ReportsIcon.vue';
+import AdminDesktopNav from '@/Components/Admin/Dashboard/Navigation/AdminDesktopNav.vue';
+
 
 const showingNavigationDropdown = ref(false);
 const showSidebar = ref(false);
@@ -52,122 +44,19 @@ function toggleSidebar() {
         <!-- Sidebar component, swap this element with another sidebar if you like -->
         <div class="flex flex-grow flex-col overflow-y-auto bg-red-700 pb-4 pt-5">
           <div class="flex flex-shrink-0 items-center px-4">
-            <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=red&shade=300"
+            <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=red&shade=200"
               alt="Easywire logo">
           </div>
-          <nav class="mt-5 flex flex-1 flex-col divide-y divide-red-800 overflow-y-auto" aria-label="Sidebar">
-            <div class="space-y-1 px-2">
-
-              <AdminSideBarLink :routeName="'admin.dashboard.index'" :data="{
-                'active': isActiveCheck('admin.dashboard.index'),
-              }">
-                <DashboardIcon />
-                Dashboard
-              </AdminSideBarLink>
+          
+          <AdminDesktopNav 
+          :isActiveCheck="isActiveCheck">
+          </AdminDesktopNav>
 
 
-              <AdminSideBarLink :active="isActiveCheck ? true : false" :routeName="'expenses.index'" :data="{
-                'active': isActiveCheck('expenses.index'),
-              }">
-              <BillsTrackerIcon />
-                Bills Tracker
-              </AdminSideBarLink>
-
-              <AdminSideBarLink :active="isActiveCheck ? true : false" :routeName="'crops.index'" :data="{
-                'active': isActiveCheck('crops.index'),
-              }">
-              <CropsIcon />
-                  Crops
-
-              </AdminSideBarLink>
-
-
-
-              <AdminSideBarLink :active="isActiveCheck ? true : false" :routeName="'inventory.index'" :data="{
-                'active': isActiveCheck('inventory.index'),
-              }">
-              <InventoryIcon />
-                Inventory
-              </AdminSideBarLink>
-
-              <AdminSideBarLink :active="isActiveCheck ? true : false" :routeName="'tasks.index'" :data="{
-                'active': isActiveCheck('tasks.index'),
-              }">
-              <TasksIcon />
-                Tasks
-              </AdminSideBarLink>
-
-
-              <a href="#"
-                class="text-red-100 hover:bg-red-600 hover:text-white group flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6">
-                <CRMIcon />
-                CRM
-              </a>
-
-              <a href="#"
-                class="text-red-100 hover:bg-red-600 hover:text-white group flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6">
-                <AssetManagerIcon />
-                Asset Manager
-              </a>
-
-              <a href="#"
-                class="text-red-100 hover:bg-red-600 hover:text-white group flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6">
-                <AIAssistantIcon />
-                
-                AI Assistant
-              </a>
-
-              <a href="#"
-                class="text-red-100 hover:bg-red-600 hover:text-white group flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6">
-                <ReportsIcon />
-                Reports
-              </a>
-
-
-              <a href="#"
-                class="text-red-100 hover:bg-red-600 hover:text-white group flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6">
-                <svg class="mr-4 h-6 w-6 flex-shrink-0 text-red-200" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                  stroke="currentColor" aria-hidden="true">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M3.375 19.5h17.25m-17.25 0a1.125 1.125 0 01-1.125-1.125M3.375 19.5h7.5c.621 0 1.125-.504 1.125-1.125m-9.75 0V5.625m0 12.75v-1.5c0-.621.504-1.125 1.125-1.125m18.375 2.625V5.625m0 12.75c0 .621-.504 1.125-1.125 1.125m1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125m0 3.75h-7.5A1.125 1.125 0 0112 18.375m9.75-12.75c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125m19.5 0v1.5c0 .621-.504 1.125-1.125 1.125M2.25 5.625v1.5c0 .621.504 1.125 1.125 1.125m0 0h17.25m-17.25 0h7.5c.621 0 1.125.504 1.125 1.125M3.375 8.25c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125m17.25-3.75h-7.5c-.621 0-1.125.504-1.125 1.125m8.625-1.125c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125m-17.25 0h7.5m-7.5 0c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125M12 10.875v-1.5m0 1.5c0 .621-.504 1.125-1.125 1.125M12 10.875c0 .621.504 1.125 1.125 1.125m-2.25 0c.621 0 1.125.504 1.125 1.125M13.125 12h7.5m-7.5 0c-.621 0-1.125.504-1.125 1.125M20.625 12c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125m-17.25 0h7.5M12 14.625v-1.5m0 1.5c0 .621-.504 1.125-1.125 1.125M12 14.625c0 .621.504 1.125 1.125 1.125m-2.25 0c.621 0 1.125.504 1.125 1.125m0 1.5v-1.5m0 0c0-.621.504-1.125 1.125-1.125m0 0h7.5" />
-</svg>
-
-                Bug Tracker
-              </a>
-            </div>
-            <div class="mt-6 pt-6">
-              <div class="space-y-1 px-2">
-                <a href="#"
-                  class="group flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6 text-red-100 hover:bg-red-600 hover:text-white">
-                  <svg class="mr-4 h-6 w-6 text-red-200" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                      d="M4.5 12a7.5 7.5 0 0015 0m-15 0a7.5 7.5 0 1115 0m-15 0H3m16.5 0H21m-1.5 0H12m-8.457 3.077l1.41-.513m14.095-5.13l1.41-.513M5.106 17.785l1.15-.964m11.49-9.642l1.149-.964M7.501 19.795l.75-1.3m7.5-12.99l.75-1.3m-6.063 16.658l.26-1.477m2.605-14.772l.26-1.477m0 17.726l-.26-1.477M10.698 4.614l-.26-1.477M16.5 19.794l-.75-1.299M7.5 4.205L12 12m6.894 5.785l-1.149-.964M6.256 7.178l-1.15-.964m15.352 8.864l-1.41-.513M4.954 9.435l-1.41-.514M12.002 12l-3.75 6.495" />
-                  </svg>
-                  Settings
-                </a>
-                <a href="#"
-                  class="group flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6 text-red-100 hover:bg-red-600 hover:text-white">
-                  <svg class="mr-4 h-6 w-6 text-red-200" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                      d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
-                  </svg>
-                  Help
-                </a>
-                <a href="#"
-                  class="group flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6 text-red-100 hover:bg-red-600 hover:text-white">
-                  <svg class="mr-4 h-6 w-6 text-red-200" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                      d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
-                  </svg>
-                  Privacy
-                </a>
-              </div>
-            </div>
-          </nav>
         </div>
       </div>
+
+
 
       <div class="flex flex-1 flex-col lg:pl-64">
         <div class="flex h-16 flex-shrink-0 border-b border-gray-200 bg-white lg:border-none">
@@ -212,6 +101,7 @@ function toggleSidebar() {
 
             <!-- Profile dropdown -->
             <div v-show="showingNavigationDropdown" class="relative ml-3">
+              
               <div>
                 <button @click="toggleDropdown" type="button"
                   class="relative flex max-w-xs items-center rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 lg:rounded-md lg:p-2 lg:hover:bg-gray-50"

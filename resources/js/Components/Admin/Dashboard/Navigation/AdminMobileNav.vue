@@ -8,7 +8,7 @@ import InventoryIcon from '@/Components/Admin/Dashboard/Navigation/Icons/Invento
 import TasksIcon from '@/Components/Admin/Dashboard/Navigation/Icons/TasksIcon.vue';
 import CRMIcon from '@/Components/Admin/Dashboard/Navigation/Icons/CRMIcon.vue';
 import ReportsIcon from '@/Components/Admin/Dashboard/Navigation/Icons/ReportsIcon.vue';
-
+import BugTrackerIcon from '@/Components/Admin/Dashboard/Navigation/Icons/BugTrackerIcon.vue';
 const props = defineProps({
     showSidebar: Boolean,
     toggleSidebar: Function,
@@ -116,6 +116,11 @@ const toggleSidebar = () => {
                             Reports
                         </AdminMobileSideBarLink>
 
+                        <AdminMobileSideBarLink :routeName="'expenses.index'">
+                            <BugTrackerIcon />
+
+                            Bug Tracker
+                        </AdminMobileSideBarLink>
 
                     </div>
                     <div class="mt-6 pt-6">
