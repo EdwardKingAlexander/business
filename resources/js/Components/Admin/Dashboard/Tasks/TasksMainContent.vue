@@ -1,5 +1,6 @@
 <script setup>
 
+import DatePicker from '@/Components/DatePicker.vue';
 import { onMounted, ref } from 'vue';
 
 const props = defineProps({
@@ -217,6 +218,10 @@ function addDueDate() {
     </div>
 
     
+</div>
+
+<div>
+  <DatePicker />
 </div>
 
 <div class="fixed bottom-4 right-4">
