@@ -3,7 +3,14 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Admin\Expense;
+use App\Models\Admin\ExpenseCategory;
 use Illuminate\Database\Seeder;
+use App\Models\User;
+use App\Models\Admin\Task;
+use App\Models\Admin\TaskCategory;
+// use App\Models\Admin\ExpenseCategory
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,11 +19,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        User::create([
+            'name' => 'Edward',
+            'email' => 'edward@rockymountainweb.design',
+            'password' => bcrypt('password'),
+            'is_administrator' => true,            
+        ]);
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+
+        ExpenseCategory::factory()->count(6)->create();
+        Expense::factory()->count(15)->create();
+
+       
+        TaskCategory::factory()->count(15)->create();
+        Task::factory()->count(15)->create();
     }
 }

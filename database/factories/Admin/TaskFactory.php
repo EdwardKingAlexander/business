@@ -20,7 +20,8 @@ class TaskFactory extends Factory
             'task' => $this->faker->word,
             'description' => $this->faker->text,
             'due_date' => $this->faker->date(),
-            'user_id' => 20,
+            'user_id' => 1,
+            'category_id' => $this->faker->numberBetween(1, 5),
             'status' => $this->faker->randomElement(['Not Started', 'In Progress', 'Completed']),
         ];
     }

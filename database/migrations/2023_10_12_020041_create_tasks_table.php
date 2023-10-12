@@ -18,6 +18,8 @@ return new class extends Migration
             $table->date('due_date');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->enum('status', ['Not Started', 'In Progress', 'Completed']);
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')->references('id')->on('task_categories');
             $table->timestamps();
         });
     }

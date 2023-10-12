@@ -221,7 +221,7 @@ function addDueDate() {
 </div>
 
 <div>
-  <DatePicker />
+  <DatePicker v-show="showModal" />
 </div>
 
 <div class="fixed bottom-4 right-4">
