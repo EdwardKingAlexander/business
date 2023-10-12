@@ -1,17 +1,22 @@
 <script setup>
 
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 
-// const props = defineProps({
-//     tasks: {
-//         type: Array,
-//         required: true
-//     }
-// });
+const props = defineProps({
+  categories: {
+    type: Array,
+    required: true
+  },  
+  // tasks: {
+  //       type: Array,
+  //       required: true
+  //   }
+});
 
 const showModal = ref(false);
 const showCategories = ref(false);
-const dueDate = ref(false);
+const dueDate = ref(null);
+const selectedCategory = ref(null);
 
 function toggleModal() {
     showModal.value = !showModal.value;
@@ -19,6 +24,10 @@ function toggleModal() {
 
 function addCategory() {
     showCategories.value = !showCategories.value;
+}
+
+function selectCategory(categoryId) {
+  console.log(categoryId);
 }
 
 function addDueDate() {
@@ -86,21 +95,12 @@ function addDueDate() {
 
               Highlighted: "bg-gray-100", Not Highlighted: "bg-white"
             -->
-            <li class="bg-white relative cursor-default select-none px-3 py-2" id="listbox-option-0" role="option">
-              <div class="flex items-center">
-                <span class="block truncate font-medium">Unlabelled</span>
+            <li v-for="category in categories" :key="category.id" class="bg-white relative cursor-default select-none px-3 py-2" id="listbox-option-0" role="option">
+              <div @click="selectCategory(category.id)" class="flex items-center">
+                <span class="block truncate font-medium">{{ category.category }}</span>
               </div>
             </li>
-            <!--
-              Select option, manage highlight styles based on mouseenter/mouseleave and keyboard navigation.
-
-              Highlighted: "bg-gray-100", Not Highlighted: "bg-white"
-            -->
-            <li class="bg-white relative cursor-default select-none px-3 py-2" id="listbox-option-1" role="option">
-              <div class="flex items-center">
-                <span class="block truncate font-medium">Engineering</span>
-              </div>
-            </li>
+          
 
             <!-- More items... -->
           </ul>

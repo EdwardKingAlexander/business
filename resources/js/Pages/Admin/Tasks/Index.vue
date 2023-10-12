@@ -4,13 +4,12 @@ import { Head, usePage } from '@inertiajs/vue3';
 import Content from '@/Components/Admin/Dashboard/Tasks/TasksMainContent.vue';
 import AdminLayout from '@/Layouts/AdminLayout.vue';
  
-// const  = usePage().props.message;
-// const products = defineProps({
-//     products: {
-//         type: Array,
-//         required: true
-//     }
-// });
+const props = defineProps({
+    categories: {
+        type: Array,
+        default: () => [],
+    },
+});
 
 
 </script>
@@ -23,7 +22,7 @@ import AdminLayout from '@/Layouts/AdminLayout.vue';
         
        
         <template v-slot:main-content>
-            <Content />
+            <Content :categories="categories" />
 
         </template>
 

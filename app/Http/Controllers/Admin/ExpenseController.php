@@ -18,6 +18,7 @@ class ExpenseController extends Controller
     
         $expenses = auth()->user()->expenses()->orderBy('created_at', 'desc')->get();
 
+
        
  
         return Inertia::render('Admin/BillsTracker/Expenses/Index',
@@ -32,7 +33,7 @@ class ExpenseController extends Controller
      */
     public function create()
     {
-        //
+       return Inertia::render('Admin/BillsTracker/Expenses/Create'); 
     }
 
     /**
@@ -40,7 +41,15 @@ class ExpenseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'expense' => 'required',
+            'amount' => 'required',
+            'entry_date' => 'required',
+            'description' => 'required',
+            'user_id' => 'required'
+        ]);
+
+        Expense::create($request->all());
     }
 
     /**

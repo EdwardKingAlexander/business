@@ -20,6 +20,15 @@ class Expense extends Model
         'user_id'
     ];
 
+    // Relationships 
+
+    // Expenses belong to a user
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    // Expenses belong to an expense category
     public function expenseCategory()
     {
         return $this->belongsTo(ExpenseCategory::class);

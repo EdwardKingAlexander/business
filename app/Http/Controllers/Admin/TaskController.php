@@ -13,7 +13,9 @@ class TaskController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Admin/Tasks/Index');
+        return Inertia::render('Admin/Tasks/Index', [
+            'categories' => auth()->user()->taskCategories()->orderBy('created_at', 'desc')->get(),
+        ]);
     }
 
     /**
