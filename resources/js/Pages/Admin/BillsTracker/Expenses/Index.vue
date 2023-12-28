@@ -9,9 +9,9 @@ import axios from 'axios';
 
 const user = usePage().props.auth.user;
 const showModal = ref(false);
+
 const modalIndigoClasses = `bg-indigo-600 hover:bg-indigo-500 focus:ring-indigo-600 ${modalClasses}`;
 const modalRedClasses = `bg-red-600 hover:bg-red-500  focus:ring-red-600 ${modalClasses}`;
-
 const modalClasses = 'rounded-md px-3 m-5 py-2 text-center text-sm font-semibold text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2';
 
 
@@ -96,11 +96,12 @@ function toggleModal() {
     </div>
   </div>
 
- <div v-show="!showModal">
+ <div class="mx-auto flex max-w-4xl justify-between gap-x-6" v-show="!showModal">
+  <div>hello</div>
   <ul role="list" class="divide-y divide-gray-100">
     <li v-for="expense in expenses" :key="expense.id" class="relative py-5 hover:bg-gray-50">
       <div class="px-4 sm:px-6 lg:px-8">
-        <div class="mx-auto flex max-w-4xl justify-between gap-x-6">
+        <div >
           <div class="flex min-w-0 gap-x-4">
             <img class="h-12 w-12 flex-none rounded-full bg-gray-50" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
             <div class="min-w-0 flex-auto">

@@ -122,6 +122,12 @@ const toggleSidebar = () => {
                             Bug Tracker
                         </AdminMobileSideBarLink>
 
+                        <AdminMobileSideBarLink :routeName="'expenses.index'">
+                            <BugTrackerIcon />
+
+                            Recipes
+                        </AdminMobileSideBarLink>
+
                     </div>
                     <div class="mt-6 pt-6">
                         <div class="space-y-1 px-2">

@@ -103,6 +103,13 @@ const toggleSidebar = () => {
 
                 Bug Tracker
               </a>
+
+              <a href="#"
+                class="text-red-100 hover:bg-red-600 hover:text-white group flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6">
+                <BugTrackerIcon />
+
+                Recipes
+              </a>
             </div>
 
 
