@@ -9,11 +9,17 @@ const formatter = ref({
     month: 'MMM',
 });
 
+const showDate = () => {
+    const date = new Date(selectedDate.value, formatter.value.date);
+    console.log(date);
+}
+
 </script>
 
 <template>
-    <div class="w-1/3 mx-auto">
-        <vue-tailwind-datepicker 
+    <div class="w-full mx-auto">
+        <vue-tailwind-datepicker
+        @click="showDate" 
         placeholder="Select a date"
         v-model="selectedDate" 
         :formatter="formatter"

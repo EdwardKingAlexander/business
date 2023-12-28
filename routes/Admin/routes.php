@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\ExpenseController;
 use App\Http\Controllers\Admin\InventoryController;
 use App\Http\Controllers\Admin\Crops\CropController;
 use App\Http\Controllers\Admin\TaskController;
+use App\Http\Controllers\Admin\DashboardController;
 
 
 /*
@@ -21,9 +22,7 @@ use App\Http\Controllers\Admin\TaskController;
 |
 */
 
-Route::get('/admin/dashboard', function () {
-    return Inertia::render('Admin/Dashboard');
-})->middleware(['auth', 'admin', 'verified'])->name('admin.dashboard.index');
+Route::get('/admin/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'admin', 'verified'])->name('admin.dashboard.index');
 
 Route::resource('/admin/expenses', ExpenseController::class)->middleware(['auth', 'admin', 'verified']);
 

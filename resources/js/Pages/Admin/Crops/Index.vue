@@ -1,9 +1,8 @@
 <script setup>
-
 import { Head } from '@inertiajs/vue3';
 
 import AdminLayout from '@/Layouts/AdminLayout.vue';
-import DashboardMainContent from '@/Components/Admin/Dashboard/DashboardMainContent.vue';
+import DashboardMainContent from '@/Components/Admin/Expenses/DashboardMainContent.vue';
 
 const props = defineProps({
     message: {
@@ -35,6 +34,7 @@ function isItAm() {
         
        
         <template v-slot:main-content>
+          <!-- Replace DashboardMainContent with CropsMainContent -->
             <DashboardMainContent />
 
         </template>

@@ -7,6 +7,8 @@ use App\Models\Admin\Expense;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 Use App\Models\User;
+use App\Http\Requests\Admin\ExpenseRequest;
+use App\Http\Resources\Admin\ExpenseResource;
 
 class ExpenseController extends Controller
 {
@@ -19,12 +21,14 @@ class ExpenseController extends Controller
         $expenses = auth()->user()->expenses()->orderBy('created_at', 'desc')->get();
 
 
+
        
  
         return Inertia::render('Admin/BillsTracker/Expenses/Index',
         [  
             'expenses' => $expenses,
-            'message' => 'Expenses Tracker'
+            'message' => 'Expenses Tracker',
+            'expenseTotal' => number_format($expenses->sum('amount'), 2),
         ]);
     }
 
@@ -39,17 +43,13 @@ class ExpenseController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ExpenseRequest $request)
     {
-        $request->validate([
-            'expense' => 'required',
-            'amount' => 'required',
-            'entry_date' => 'required',
-            'description' => 'required',
-            'user_id' => 'required'
-        ]);
 
-        Expense::create($request->all());
+        $expense = Expense::create($request->validated());
+       
+        return new ExpenseResource($expense);
+
     }
 
     /**
@@ -57,7 +57,9 @@ class ExpenseController extends Controller
      */
     public function show(Expense $expense)
     {
-        //
+        return Inertia::render('Admin/BillsTracker/Expenses/Edit', [
+            'expense' => $expense
+        ]);
     }
 
     /**
@@ -65,7 +67,7 @@ class ExpenseController extends Controller
      */
     public function edit(Expense $expense)
     {
-        //
+    
     }
 
     /**

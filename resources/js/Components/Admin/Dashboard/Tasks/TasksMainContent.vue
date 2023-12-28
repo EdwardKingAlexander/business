@@ -1,7 +1,7 @@
 <script setup>
 
 import DatePicker from '@/Components/DatePicker.vue';
-import { onMounted, ref } from 'vue';
+import { ref } from 'vue';
 
 const props = defineProps({
   categories: {
@@ -16,8 +16,16 @@ const props = defineProps({
 
 const showModal = ref(false);
 const showCategories = ref(false);
-const dueDate = ref(null);
 const selectedCategory = ref(null);
+
+const form = ref({
+  expense: '',
+  amount: '',
+  entryDate: '2024-12-23',
+  description: '',
+  entryDate: '',
+  expenseCategoryId: '',
+});
 
 function toggleModal() {
     showModal.value = !showModal.value;
@@ -31,9 +39,6 @@ function selectCategory(categoryId) {
   console.log(categoryId);
 }
 
-function addDueDate() {
-    dueDate.value = !dueDate.value;
-}
 
 
 </script>
@@ -45,10 +50,12 @@ function addDueDate() {
 <div class="p-3 sm:w-1/2 lg:w-3/4 mx-auto">
 <form v-show="showModal" action="#" class="relative">
   <div class="overflow-hidden rounded-lg border border-gray-300 shadow-sm focus-within:border-indigo-500 focus-within:ring-1 focus-within:ring-indigo-500">
-    <label for="title" class="sr-only">Title</label>
-    <input type="text" name="title" id="title" class="block w-full border-0 pt-2.5 text-lg font-medium placeholder:text-gray-400 focus:ring-0" placeholder="Title">
+    
+    <label for="expense" class="sr-only">Title</label>
+    <input v-model="form.expense" type="text" name="expense" id="expense" class="block w-full border-0 pt-2.5 text-lg font-medium placeholder:text-gray-400 focus:ring-0" placeholder="Expense">
+    
     <label for="description" class="sr-only">Description</label>
-    <textarea rows="2" name="description" id="description" class="block w-full resize-none border-0 py-0 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="Write a description..."></textarea>
+    <textarea v-model="form.description" rows="2" name="description" id="description" class="block w-full resize-none border-0 py-0 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="Write a description..."></textarea>
 
     <!-- Spacer element to match the height of the toolbar -->
     <div aria-hidden="true">
@@ -69,6 +76,7 @@ function addDueDate() {
     <div class="flex flex-nowrap justify-end space-x-2 px-2 py-2 sm:px-3">
      
       <div class="flex-shrink-0">
+        
         <label id="listbox-label" class="sr-only">Add a category</label>
         <div class="relative">
           <button @click="addCategory" type="button" class="relative inline-flex items-center whitespace-nowrap rounded-full bg-gray-50 px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 sm:px-3" aria-haspopup="listbox" aria-expanded="true" aria-labelledby="listbox-label">
@@ -79,17 +87,7 @@ function addDueDate() {
             <!-- Selected: "text-gray-900" -->
             <span class="hidden truncate sm:ml-2 sm:block">Category</span>
           </button>
-
-          <!--
-            Select popover, show/hide based on select state.
-
-            Entering: ""
-              From: ""
-              To: ""
-            Leaving: "transition ease-in duration-100"
-              From: "opacity-100"
-              To: "opacity-0"
-          -->
+        
           <ul v-show="showCategories" class="absolute right-0 z-10 mt-1 max-h-56 w-52 overflow-auto rounded-lg bg-white py-3 text-base shadow ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm" tabindex="-1" role="listbox" aria-labelledby="listbox-label" aria-activedescendant="listbox-option-0">
             <!--
               Select option, manage highlight styles based on mouseenter/mouseleave and keyboard navigation.
@@ -111,7 +109,7 @@ function addDueDate() {
       <div class="flex-shrink-0">
         <label id="listbox-label" class="sr-only">Add a due date</label>
         <div class="relative">
-          <button @click="addDueDate" type="button" class="relative inline-flex items-center whitespace-nowrap rounded-full bg-gray-50 px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 sm:px-3" aria-haspopup="listbox" aria-expanded="true" aria-labelledby="listbox-label">
+          <button  type="button" class="relative inline-flex items-center whitespace-nowrap rounded-full bg-gray-50 px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 sm:px-3" aria-haspopup="listbox" aria-expanded="true" aria-labelledby="listbox-label">
             <!-- Selected: "text-gray-300", Default: "text-gray-500" -->
             <svg class="h-5 w-5 flex-shrink-0 text-gray-300 sm:-ml-1" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
               <path fill-rule="evenodd" d="M5.75 2a.75.75 0 01.75.75V4h7V2.75a.75.75 0 011.5 0V4h.25A2.75 2.75 0 0118 6.75v8.5A2.75 2.75 0 0115.25 18H4.75A2.75 2.75 0 012 15.25v-8.5A2.75 2.75 0 014.75 4H5V2.75A.75.75 0 015.75 2zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75z" clip-rule="evenodd" />
@@ -130,7 +128,7 @@ function addDueDate() {
               From: "opacity-100"
               To: "opacity-0"
           -->
-          <ul v-show="dueDate" class="absolute right-0 z-10 mt-1 max-h-56 w-52 overflow-auto rounded-lg bg-white py-3 text-base shadow ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm" tabindex="-1" role="listbox" aria-labelledby="listbox-label" aria-activedescendant="listbox-option-0">
+          <ul v-show="false" class="absolute right-0 z-10 mt-1 max-h-56 w-52 overflow-auto rounded-lg bg-white py-3 text-base shadow ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm" tabindex="-1" role="listbox" aria-labelledby="listbox-label" aria-activedescendant="listbox-option-0">
             <!--
               Select option, manage highlight styles based on mouseenter/mouseleave and keyboard navigation.
 

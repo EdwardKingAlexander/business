@@ -17,7 +17,8 @@ class Expense extends Model
         'amount',
         'entry_date',
         'description',
-        'user_id'
+        'user_id',
+        'expense_category_id'
     ];
 
     // Relationships 

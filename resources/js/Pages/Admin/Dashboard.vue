@@ -1,7 +1,14 @@
 <script setup>
-
 import AdminLayout from '@/Layouts/AdminLayout.vue';
-import DashboardMainContent from '@/Components/Admin/Dashboard/DashboardMainContent.vue';
+import DashboardMainContent from '@/Components/Admin/Expenses/DashboardMainContent.vue';
+import { usePage } from '@inertiajs/vue3';
+
+defineProps({
+    transactions: {
+        type: Object,
+        required: true
+    },
+});
 
 
 </script>
@@ -9,7 +16,7 @@ import DashboardMainContent from '@/Components/Admin/Dashboard/DashboardMainCont
 <template>
     <AdminLayout>
         <template v-slot:main-content>
-            <DashboardMainContent />
+            <DashboardMainContent :transactions="transactions" />
 
             
         </template>
