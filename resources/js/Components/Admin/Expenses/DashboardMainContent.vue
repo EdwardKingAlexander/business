@@ -7,7 +7,7 @@ import CrmCard from "@/Components/Admin/Dashboard/CRM/CrmDashboardCard.vue";
 import ExpenseCard from "@/Components/Admin/Dashboard/Expenses/ExpenseDashboardCard.vue";
 import CropsCard from "@/Components/Admin/Dashboard/Crops/CropsDashboardCard.vue";
 import TasksCard from "@/Components/Admin/Dashboard/Tasks/TasksDashboardCard.vue";
-import BugTrackerCard from "@/Components/Admin/Dashboard/BugTracker/BugTrackerDashboardCard.vue";
+import ProjectTrackerCard from "@/Components/Admin/Dashboard/ProjectTracker/ProjectTrackerDashboardCard.vue";
 
 
 defineProps({
@@ -30,7 +30,7 @@ defineProps({
         <div class="mt-2 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           <!-- Cards -->
 
-          <BugTrackerCard />
+          <ProjectTrackerCard />
 
 
 
