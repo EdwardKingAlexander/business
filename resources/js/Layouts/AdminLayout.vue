@@ -40,21 +40,12 @@ function toggleSidebar() {
       </AdminMobileNav>
 
       <!-- Static sidebar for desktop -->
-      <div class="hidden lg:fixed lg:inset-y-0 lg:flex lg:w-64 lg:flex-col">
-        <!-- Sidebar component, swap this element with another sidebar if you like -->
-        <div class="flex flex-grow flex-col overflow-y-auto bg-red-700 pb-4 pt-5">
-          <div class="flex flex-shrink-0 items-center px-4">
-            <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=red&shade=200"
-              alt="Easywire logo">
-          </div>
+   
           
           <AdminDesktopNav 
           :isActiveCheck="isActiveCheck">
           </AdminDesktopNav>
 
-
-        </div>
-      </div>
 
 
 

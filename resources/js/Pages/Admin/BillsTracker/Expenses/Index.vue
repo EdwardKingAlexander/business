@@ -6,6 +6,7 @@ import AdminLayout from '@/Layouts/AdminLayout.vue';
 import Category from '@/Components/Admin/Expenses/Category.vue';
 import DueDate from '@/Components/Admin/Expenses/DueDate.vue';
 import axios from 'axios';
+import { createdAt } from '@/Helpers/dates.js';
 
 const user = usePage().props.auth.user;
 const showModal = ref(false);
@@ -73,9 +74,11 @@ const updateExpenses =  () => {
 }
 
 
-function toggleModal() {
+const toggleModal = () => {
     showModal.value = !showModal.value;
 }
+
+
 
 
 </script>
@@ -96,43 +99,38 @@ function toggleModal() {
     </div>
   </div>
 
- <div class="mx-auto flex max-w-4xl justify-between gap-x-6" v-show="!showModal">
-  <div>hello</div>
-  <ul role="list" class="divide-y divide-gray-100">
-    <li v-for="expense in expenses" :key="expense.id" class="relative py-5 hover:bg-gray-50">
-      <div class="px-4 sm:px-6 lg:px-8">
-        <div >
-          <div class="flex min-w-0 gap-x-4">
-            <img class="h-12 w-12 flex-none rounded-full bg-gray-50" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
-            <div class="min-w-0 flex-auto">
-              <p class="text-sm font-semibold leading-6 text-gray-900">
-                <a :href="expense.href">
-                  <span class="absolute inset-x-0 -top-px bottom-0" />
-                  {{ expense.expense }}
-                </a>
-              </p>
 
-              <p class="text-sm  leading-6 text-gray-700">
-                <a :href="expense.href">
-                  <span class="absolute inset-x-0 -top-px bottom-0" />
-                  {{ expense.description }}
-                </a>
-              </p>
-              <p class="mt-1 flex text-sm leading-5 text-red-500">
-                <a :href="`mailto:${expense.amount}`" class="relative truncate hover:underline">${{ expense.amount }}</a>
-              </p>
-              <p class="mt-1 flex text-sm leading-5 text-gray-500" >{{expense.created_at}}</p>
-            </div>
-          </div>
-       
-        </div>
-      </div>
-    </li>
-  </ul>
+  <div 
+  class="grid grid-cols-1 gap-4 sm:grid-cols-3 m-3" 
+  v-show="!showModal">
+  <div 
+  v-for="expense in expenses" 
+  :key="expense.id" 
+  class="relative flex items-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400">
+    <div class="flex-shrink-0">
+      <img 
+      class="h-10 w-10 rounded-full" 
+      src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" 
+      alt="">
+    </div>
+    <div class="min-w-0 flex-1">
+      <a 
+      href="#" 
+      class="focus:outline-none">
+        <span 
+        class="absolute inset-0" 
+        aria-hidden="true"></span>
+        <p class="text-sm font-medium text-gray-900">{{ expense.expense }}</p>
+        <p class="truncate text-sm text-gray-500">${{ expense.amount }} - {{ expense.description }}</p>
+        <p class="text-sm text-gray-500" >{{ createdAt(expense.created_at) }}</p>
+      </a>
+    </div>
+  </div>
 
-  <!-- Add the button from TasksMainContent (extract it into component) to add expenses and income -->
+  <!-- More expenses... -->
+</div>
 
- </div>
+
 
  <div v-show="showModal" >
   <div class="p-3 sm:w-1/2 lg:w-3/4 mx-auto">
@@ -142,14 +140,23 @@ function toggleModal() {
     
     <label for="expense" class="sr-only">Expense</label>
     <input 
+    required
     v-model="formData.expense"
     type="text" 
     name="expense" 
     id="expense" 
-    class="block w-full border-0 pt-2.5 text-lg font-medium placeholder:text-gray-400 focus:ring-0" placeholder="Expense">
+    class="block w-full border-0 pt-2.5 text-lg font-medium placeholder:text-gray-400 focus:ring-0" 
+    placeholder="Expense">
     
     <label for="description" class="sr-only">Description</label>
-    <textarea v-model="formData.description" rows="4" name="description" id="description" class="block w-full resize-none border-0 py-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="Write a description..."></textarea>
+    <textarea 
+    required 
+    v-model="formData.description" 
+    rows="4" 
+    name="description" 
+    id="description" 
+    class="block w-full resize-none border-0 py-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" 
+    placeholder="Write a description..."></textarea>
 
     <!-- Spacer element to match the height of the toolbar -->
     <div aria-hidden="true">
@@ -166,12 +173,12 @@ function toggleModal() {
   </div>
 
   <div class="absolute inset-x-px bottom-0">
-    <!-- Actions: These are just examples to demonstrate the concept, replace/wire these up however makes sense for your project. -->
     <div class="flex flex-nowrap justify-end space-x-2 px-2 py-2 sm:px-3">
      
       <Category  />
 
-      <DueDate v-model="formData.entry_date" />
+      <DueDate 
+      v-model="formData.entry_date" />
     </div>
 
    
@@ -182,9 +189,21 @@ function toggleModal() {
       <div class="flex-shrink-0">
 
         <div class="mb-2">
-          <input v-model="formData.amount" type="text" name="amount" id="amount" class="block w-full rounded-md  py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="$0.00">
+          <input 
+          required 
+          v-model="formData.amount" 
+          type="text" 
+          name="amount" 
+          id="amount" 
+          class="block w-full rounded-md  py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" 
+          placeholder="$0.00">
         </div>
-        <button type="submit" class="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Add Expense</button>
+        <button 
+        type="submit" 
+        class="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 m-2">Add Expense</button>
+
+        <button 
+        class="inline-flex items-center rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 m-2">Add Category</button>
       </div>
     </div>
   </div>

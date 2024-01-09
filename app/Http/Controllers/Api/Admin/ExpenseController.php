@@ -15,7 +15,16 @@ class ExpenseController extends Controller
      */
     public function index()
     {
-        return ExpenseResource::collection(Expense::all());
+        
+        $currentMonth = now()->month;
+        $currentYear = now()->year;
+    
+        $expenses = auth()->user()->expenses()->whereMonth('created_at', $currentMonth)
+        ->whereYear('created_at', $currentYear)
+        ->get();
+
+
+        return $expenses;
     }
 
     /**

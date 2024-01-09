@@ -10,7 +10,7 @@ import CRMIcon from '@/Components/Admin/Dashboard/Navigation/Icons/CRMIcon.vue';
 import AssetManagerIcon from '@/Components/Admin/Dashboard/Navigation/Icons/AssetManagerIcon.vue';  
 import AIAssistantIcon from '@/Components/Admin/Dashboard/Navigation/Icons/AIAssistantIcon.vue';  
 import ReportsIcon from '@/Components/Admin/Dashboard/Navigation/Icons/ReportsIcon.vue';
-import BugTrackerIcon from '@/Components/Admin/Dashboard/Navigation/Icons/BugTrackerIcon.vue';
+import ProjectTrackerIcon from '@/Components/Admin/Dashboard/Navigation/Icons/ProjectTrackerIcon.vue';
 import SettingsIcon from '@/Components/Admin/Dashboard/Navigation/Icons/SettingsIcon.vue';
 
 
@@ -28,6 +28,14 @@ const toggleSidebar = () => {
 </script>
 
 <template>
+     <div class="hidden lg:fixed lg:inset-y-0 lg:flex lg:w-64 lg:flex-col">
+        <!-- Sidebar component, swap this element with another sidebar if you like -->
+        <div class="flex flex-grow flex-col overflow-y-auto bg-red-700 pb-4 pt-5">
+          <div class="flex flex-shrink-0 items-center px-4">
+            <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=red&shade=200"
+              alt="Easywire logo">
+          </div>
+
     <nav class="mt-5 flex flex-1 flex-col divide-y divide-red-800 overflow-y-auto" aria-label="Sidebar">
             <div class="space-y-1 px-2">
 
@@ -37,6 +45,13 @@ const toggleSidebar = () => {
                 <DashboardIcon />
                 Dashboard
               </AdminSideBarLink>
+
+              <a href="#"
+                class="text-red-100 hover:bg-red-600 hover:text-white group flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6">
+                <ProjectTrackerIcon />
+
+                Project Tracker
+              </a>
 
 
               <AdminSideBarLink :active="isActiveCheck ? true : false" :routeName="'expenses.index'" :data="{
@@ -97,12 +112,7 @@ const toggleSidebar = () => {
               </a>
 
 
-              <a href="#"
-                class="text-red-100 hover:bg-red-600 hover:text-white group flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6">
-                <BugTrackerIcon />
-
-                Bug Tracker
-              </a>
+          
 
               <a href="#"
                 class="text-red-100 hover:bg-red-600 hover:text-white group flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6">
@@ -141,4 +151,9 @@ const toggleSidebar = () => {
               </div>
             </div>
           </nav>
+
+          
+        </div>
+      </div>
+
 </template>

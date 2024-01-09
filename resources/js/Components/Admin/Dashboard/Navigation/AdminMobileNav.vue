@@ -8,7 +8,7 @@ import InventoryIcon from '@/Components/Admin/Dashboard/Navigation/Icons/Invento
 import TasksIcon from '@/Components/Admin/Dashboard/Navigation/Icons/TasksIcon.vue';
 import CRMIcon from '@/Components/Admin/Dashboard/Navigation/Icons/CRMIcon.vue';
 import ReportsIcon from '@/Components/Admin/Dashboard/Navigation/Icons/ReportsIcon.vue';
-import BugTrackerIcon from '@/Components/Admin/Dashboard/Navigation/Icons/BugTrackerIcon.vue';
+import ProjectTrackerIcon from '@/Components/Admin/Dashboard/Navigation/Icons/ProjectTrackerIcon.vue';
 const props = defineProps({
     showSidebar: Boolean,
     toggleSidebar: Function,
@@ -72,6 +72,7 @@ const toggleSidebar = () => {
                 </div>
 
                 <div class="flex flex-shrink-0 items-center px-4">
+                    <!-- 1080 x 1540 svg image -->
                     <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=red&shade=300"
                         alt="Easywire logo">
                 </div>
@@ -83,6 +84,13 @@ const toggleSidebar = () => {
                             <DashboardIcon />
                             Dashboard
                         </AdminMobileSideBarLink>
+
+                        <AdminMobileSideBarLink :routeName="'expenses.index'">
+                            <ProjectTrackerIcon />
+
+                            Project Tracker
+                        </AdminMobileSideBarLink>
+
 
                         <AdminMobileSideBarLink :routeName="'expenses.index'">
                             <BillsIcon />
@@ -116,12 +124,7 @@ const toggleSidebar = () => {
                             Reports
                         </AdminMobileSideBarLink>
 
-                        <AdminMobileSideBarLink :routeName="'expenses.index'">
-                            <BugTrackerIcon />
-
-                            Bug Tracker
-                        </AdminMobileSideBarLink>
-
+                       
                         <AdminMobileSideBarLink :routeName="'expenses.index'">
                             <BugTrackerIcon />
 

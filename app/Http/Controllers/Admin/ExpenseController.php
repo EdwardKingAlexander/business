@@ -17,8 +17,13 @@ class ExpenseController extends Controller
      */
     public function index()
     {
+
+        $currentMonth = now()->month;
+        $currentYear = now()->year;
     
-        $expenses = auth()->user()->expenses()->orderBy('created_at', 'desc')->get();
+        $expenses = auth()->user()->expenses()->whereMonth('created_at', $currentMonth)
+        ->whereYear('created_at', $currentYear)
+        ->get();
 
 
 
